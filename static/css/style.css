@@ -1,0 +1,440 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Cairo', sans-serif;
+    background-color: #f1f1f1;  /* Light grey background for a softer look */
+    color: #333333;  /* Darker text for better readability */
+    display: flex;
+    height: 100vh;  /* Ensure full screen height */
+    flex-direction: row;
+}
+
+.sidebar {
+    background-color: #2C3E50;     /* لون خلفية احترافي */
+    color: #fff;
+    width: 260px;
+    padding: 30px 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 2px 0 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transition: all 0.3s ease;
+}
+
+.sidebar h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    align-self: center;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ECF0F1;
+    text-decoration: none;
+    padding: 12px 16px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar a:hover {
+    background-color: #34495E;
+    color: #3498DB;
+}
+
+.sidebar a.active {
+    background-color: #1ABC9C;
+    color: #fff;
+}
+
+/* أيقونات في حال استخدام font-awesome لاحقًا */
+.sidebar a i {
+    font-size: 18px;
+}
+
+
+.main {
+    margin-left: 270px;  /* Adjusted margin to leave space for the sidebar */
+    padding: 40px 30px;
+    flex-grow: 1;
+    overflow-y: auto;  /* Allows for scrolling if content overflows */
+}
+
+header {
+    display: flex;
+    justify-content: center;   /* مركزي أفقي */
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 20px;                 /* مسافة بين العناصر */
+}
+
+.card {
+    background-color: #ECF0F1;  /* Light gray background for cards */
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth card hover effect */
+}
+
+.card:hover {
+    transform: translateY(-5px);  /* Lift the card on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);  /* More intense shadow on hover */
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #2C3E50;  /* Darker text for headings */
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.chart, .table, .form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;  /* Increased gap between elements */
+}
+
+.chart > div, .table > div, .form > div {
+    flex: 1 1 45%;
+    min-width: 300px;  /* Ensures cards have a minimum width */
+}
+
+.btn {
+    background-color: #2980B9;  /* Bright blue for buttons */
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #3498DB;  /* Lighter blue on hover */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #BDC3C7;  /* Soft gray border for table cells */
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Status styling */
+.status-safe {
+    background-color: #27AE60;  /* Green for safe status */
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.status-alert {
+    background-color: #E74C3C;  /* Red for alert status */
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Filter styling */
+.filter-select, .filter-buttons, .input-group {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.filter-select label, .input-group label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    border: 1px solid #BDC3C7;  /* Light gray border */
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="number"], select {
+    margin-bottom: 20px;  /* Consistent spacing for inputs */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2980B9;  /* Blue border on focus for better accessibility */
+}
+
+/* Media Query for responsiveness */
+@media screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .chart > div, .table > div, .form > div {
+        flex: 1 1 100%;  /* Make cards stack on mobile */
+    }
+}
+
+/* Export dropdown and button */
+.export-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.export-group {
+    display: flex;
+    align-items: center;
+    background-color: #ecf0f1;  /* Light background to match the design */
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.export-select {
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #d6e3f3;
+    color: #2C3E50;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+}
+
+.export-btn {
+    background-color: #2980B9;  /* Same blue button color */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.export-btn:hover {
+    background-color: #3498DB;  /* Lighter blue on hover */
+}
+
+/* Action Buttons */
+.btn-block, .btn-unblock {
+    background-color: #4CAF50;  /* Green for Block action */
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-block:hover {
+    background-color: #45a049;  /* Lighter green on hover */
+}
+
+.btn-unblock {
+    background-color: #f44336; /* Red for Unblock action */
+    padding: 6px 12px;
+}
+
+.btn-unblock:hover {
+    background-color: #d32f2f;  /* Darker red on hover */
+}
+
+/* Update for the Block column in the All Network IPs table */
+th:nth-child(1), td:nth-child(1) {
+    text-align: center;
+}
+
+
+ /* Blocked IPs - Status column */
+.status-alert {
+    background-color: #e74c3c; /* أحمر */
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+  /* All Network IPs - Status column */
+  .status-active {
+    background-color: #2ecc71; /* أخضر */
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  
+
+
+  .status-attack {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+  }
+  
+  .status-normal {
+    background-color: #2ecc71;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    width: 100px;
+  }
+  
+
+  .main-content {
+    padding: 20px; /* Optional for inner spacing */
+  }
+  
+
+
+  
+
+
+  .table-wrapper {
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid #ccc;
+    position: relative;
+  }
+  
+  #resultsTable {
+    width: 1500px; /* أو حسب عرض أعمدتك */
+    border-collapse: collapse;
+  }
+  
+  #resultsTable th,
+  #resultsTable td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+    background-color: white;
+    white-space: nowrap;
+  }
+  
+  /* تجميد رأس الجدول */
+  #resultsTable thead th {
+    position: sticky;
+    top: 0;
+    background-color: #f5f5f5;
+    z-index: 2;
+  }
+  
+  /* تجميد أول عمود */
+  #resultsTable th:first-child,
+  #resultsTable td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: #f5f5f5;
+    z-index: 3;
+  }
+  
+
+  .card ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .card ul li {
+    background: #f1f1f1;
+    padding: 6px 10px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+  }
+
+
+
+  .status-active {
+    background-color: #0eb855; /* أخضر */
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .btn-block {
+    background-color: #0eb855; /* أخضر */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+
+  .status-detected {
+    color: #d35400;
+    font-weight: bold;
+  }
+
+  
+
+  .row-normal {
+    background-color: rgb(6, 167, 6) !important;
+    color: white !important;
+  }
+  .row-alert {
+    background-color: red !important;
+    color: white !important;
+  }
+
+
+  .btn-logout {
+    background-color: #3498DB;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  .btn-logout:hover {
+    background-color: #e74c3c;
+  }
